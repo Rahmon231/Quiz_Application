@@ -159,7 +159,7 @@ public class CategoryAdapter extends RecyclerView.Adapter<CategoryAdapter.ViewHo
             loadingDialog.show();
             Map<String,Object> catData = new ArrayMap<>();
             catData.put("NAME",catNewName);
-            final FirebaseFirestore firestore = FirebaseFirestore.getInstance();
+             FirebaseFirestore firestore = FirebaseFirestore.getInstance();
             firestore.collection("QUIZ").document(cat_list.get(pos).getId())
                     .update(catData)
                     .addOnSuccessListener(new OnSuccessListener<Void>() {

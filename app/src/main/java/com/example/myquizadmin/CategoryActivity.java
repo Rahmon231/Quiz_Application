@@ -81,7 +81,21 @@ public class CategoryActivity extends AppCompatActivity {
                     dialogCatName.setError("Enter Category name");
                     return;
                 }
-                addNewCategory(dialogCatName.getText().toString());
+                int i;
+                for ( i = 0; i < catList.size(); i++) {
+                    if(dialogCatName.getText().toString().equalsIgnoreCase(catList.get(i).getName())){
+                        break;
+                    }
+                }
+                if(i == catList.size()){
+                    addNewCategory(dialogCatName.getText().toString());
+                    Toast.makeText(CategoryActivity.this, "Course added successfully",
+                            Toast.LENGTH_SHORT).show();
+                }else {
+                    Toast.makeText(CategoryActivity.this, "Course available",
+                            Toast.LENGTH_SHORT).show();
+                }
+                //addNewCategory(dialogCatName.getText().toString());
             }
         });
         LinearLayoutManager layoutManager = new LinearLayoutManager(this);
